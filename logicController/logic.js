@@ -13,8 +13,7 @@ const formatEquip = (equip) =>{
         return 'GOBLET'
         case 'DRESS':
         return 'HELMET'
-        default:
-        return null;
+        default: return 'ERROR';
     }
 }
 const formatChar = (charID) => {

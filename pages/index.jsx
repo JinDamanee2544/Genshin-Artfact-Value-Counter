@@ -16,7 +16,7 @@ export default function App() {
 
 
   const fetchData = async (UID) => {
-    const url = `https://enka.shinshin.moe/u/${UID}`;
+    const url = `https://enka.shinshin.moe/u/${809480504}`;
     const data = await axios.get(url);
 
     if (data.status !== 200) {
@@ -51,7 +51,7 @@ export default function App() {
         selectedStat,
       };
     });
-    console.log(selectedChar);
+    //console.log(selectedChar);
     setCharecterData(selectedChar);
     setPlayerData(playerInfo)
   };
