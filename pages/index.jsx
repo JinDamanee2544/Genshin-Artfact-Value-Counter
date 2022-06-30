@@ -7,7 +7,7 @@ const StatPanel = dynamic(
   ()=>import ('../components/StatPanel') , {suspense:true,ssr:true}
 )
 
-const testUID = '809480504' || '820525870'
+//const testUID = '809480504' || '820525870'
 
 export default function App() {
   const [charecterData, setCharecterData] = useState([]);
@@ -16,7 +16,7 @@ export default function App() {
 
 
   const fetchData = async (UID) => {
-    const url = `https://enka.shinshin.moe/u/${820525870}`;
+    const url = `https://enka.shinshin.moe/u/${UID}`;
     const data = await axios.get(url);
 
     if (data.status !== 200) {
