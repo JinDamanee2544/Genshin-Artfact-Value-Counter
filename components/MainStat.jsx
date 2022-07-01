@@ -16,7 +16,7 @@ const MainStat = ({atf,select,setSelect}) => {
             setSubSumValue(sum)
         }
     },[activeAtf])
-    
+
     /*
     useEffect(() => {
         setSelect(select)
@@ -43,7 +43,7 @@ const MainStat = ({atf,select,setSelect}) => {
             })}
             </div>
             <btn className="bg-orange-500 text-white btn btn-sm border-none hover:bg-orange-500 w-full text-xl mt-2">
-                <span>{sumSubValue}</span>
+                <span>{sumSubValue.toString().slice(0,4)}</span>
             </btn>
         </div>
     )
