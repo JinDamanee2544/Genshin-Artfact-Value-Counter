@@ -17,7 +17,7 @@ export default function App() {
   const [UID,setUID] = useState('');
 
   const fetchData = async (UID) => {
-    /*
+    
     const url = `https://enka.shinshin.moe/u/${UID}`;
     const data = await axios.get(url);
 
@@ -26,8 +26,8 @@ export default function App() {
       return null;
     }
     const html = await data.data;
-    */
-    const html = MockData
+    
+    //const html = MockData
     
     const playerInfo = html.playerInfo
     
