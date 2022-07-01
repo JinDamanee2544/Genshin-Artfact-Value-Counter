@@ -1,8 +1,11 @@
 import { useContext, useEffect, useState } from "react";
 import { formatStat ,formatEquip } from "../logicController/logic";
+import { useData } from "./Character";
 import Substat from "./Substat";
 
-const MainStat = ({atf,select,setSelect}) => {
+const MainStat = ({atf}) => {
+
+    const {select,overAll,setOverAll} = useData()
 
     const [sumSubValue,setSubSumValue] = useState(0)    // Sum in each ATF
     const [activeAtf,setActiveAtf] = useState(null)     // Track changed ATF 
@@ -14,6 +17,10 @@ const MainStat = ({atf,select,setSelect}) => {
         if(activeAtf){
             const sum = select[atfType].map(substat=>substat.value).reduce((prev,curr)=>prev+curr,0)
             setSubSumValue(sum)
+
+            const newOverAll = Object.assign({},overAll)
+            newOverAll[atfType] = sum;
+            setOverAll(newOverAll)  
         }
     },[activeAtf])
 
@@ -38,13 +45,13 @@ const MainStat = ({atf,select,setSelect}) => {
             <div className="grid grid-cols-2 gap-2 md:gap-y-1 md:grid-cols-1">
             {atf.substat.map((substat,idx)=>{
                 return (
-                <Substat key={idx} substat={substat} atfType={atfType} setActiveAtf={setActiveAtf} select={select} setSelect={setSelect} /> 
+                <Substat key={idx} substat={substat} atfType={atfType} setActiveAtf={setActiveAtf}/> 
                 )
             })}
             </div>
-            <btn className="bg-orange-500 text-white btn btn-sm border-none hover:bg-orange-500 w-full text-xl mt-2">
+            <button className="bg-orange-500 text-white btn btn-sm border-none hover:bg-orange-500 w-full text-xl mt-2">
                 <span>{sumSubValue.toString().slice(0,4)}</span>
-            </btn>
+            </button>
         </div>
     )
 }

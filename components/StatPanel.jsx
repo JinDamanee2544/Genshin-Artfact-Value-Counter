@@ -10,7 +10,6 @@ const StatPanel = ({charecterData,playerData,UID,setUID}) => {
         if(search && search.length===9){
           setUID(search);
         }
-        console.log(UID);
     }
     
     return (
@@ -26,7 +25,7 @@ const StatPanel = ({charecterData,playerData,UID,setUID}) => {
             </div>
             <div className="form-control w-full ml-4">
               <div className="input-group w-full">
-                <input type="number" placeholder="Search your UID …" className="input input-ghost w-full text-xl" 
+                <input type="number" placeholder="Search UID …" className="input input-ghost w-full text-xl" 
                   onChange={(e)=>setSearch(e.target.value)} value={search}/>
                 <button className="btn btn-ghost text-white bg-gradient-to-tr from-red-500 to-orange-500"
                 onClick={()=>searchUID()}>

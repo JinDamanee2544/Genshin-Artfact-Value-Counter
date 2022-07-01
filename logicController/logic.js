@@ -17,20 +17,42 @@ const formatEquip = (equip) =>{
     }
 }
 const formatChar = (charID) => {
-    switch (charID) {
-        case 10000022: return 'Venti'
-        case 10000030: return 'Zhongli'
-        case 10000033: return 'Childe'
-        case 10000037: return 'Ganyu'
-        case 10000038: return 'Albedo'
-        case 10000052: return 'Raiden Shogun'
-        case 10000054: return 'Kokomi'
-        case 10000056: return 'SARA'
-        case 10000057: return 'Itto'
-        case 10000058: return 'YAE'
+    switch (parseInt(charID%100)) {
+        case 2 : return 'Kamisato Ayaka'
+        case 22: return 'Venti'
+
+        case 25: return 'Xingqiu'
+
+        case 26: return 'Xiao'
+
+        case 30: return 'Zhongli'
+        case 32: return 'Bennett'
+        case 33: return 'Childe'
+        case 37: return 'Ganyu'
+        case 38: return 'Albedo'
+        case 43: return 'Sucrose'
+        case 46: return 'Hutao'
+        case 47: return 'Kaedehara Kazuha'
+        case 49: return 'Yoimiya'
+
+        case 52: return 'Raiden Shogun'
+        case 54: return 'Kokomi'
+        case 56: return 'Sara'
+        case 57: return 'Itto'
+        case 58: return 'Yae'
+
+        case 55: return 'Gorou'
+        
+
+        case 60: return 'Yelan'
+        case 63: return 'Shenhe'
+        case 64: return 'Yunjin'
+        case 66: return 'Kamisato Ayato'
+        
         default:
-        return charID
+            return charID
     }
+    
 } 
 const simplifyStat = (status) => {
     switch (status) {

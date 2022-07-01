@@ -1,9 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { formatStat, statValueCalculator } from "../logicController/logic";
-import { selectContext } from "./Character";
+import { selectContext, useData } from "./Character";
 
 
-const Substat = ({substat,atfType,setActiveAtf,select,setSelect}) => {
+const Substat = ({substat,atfType,setActiveAtf}) => {
+
+    const {select,setSelect} = useData();
+
     const [highlight,setHighlight] = useState(false);
 
 
