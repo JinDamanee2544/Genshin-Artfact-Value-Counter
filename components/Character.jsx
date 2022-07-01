@@ -36,7 +36,7 @@ const Character = ({character}) => {
         <div className="bg-white shadow-xl p-5 rounded-xl">
             <div className=" w-full bg-red-500 rounded p-2 mb-2 flex justify-between">
                 <h1 className="font-bold text-white">{formatChar(character.charID)}</h1>
-                <span className="text-white text-xl font-bold"> {} / 45 </span>
+                
             </div>
             <div className="grid grid-flow-row md:grid-flow-col gap-6 auto-cols-fr auto-rows-fr">
             {
@@ -49,4 +49,5 @@ const Character = ({character}) => {
         </div>
     )
 }
+/* <span className="text-white text-xl font-bold"> {} / 45 </span> */
 export default Character;
