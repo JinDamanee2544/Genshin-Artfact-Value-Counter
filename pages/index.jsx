@@ -3,19 +3,22 @@ import { Suspense, useEffect, useState } from "react";
 import Spinner from "../components/Spinner";
 import dynamic from "next/dynamic";
 
+import MockData from '../data/MockData'
+
 const StatPanel = dynamic(
   ()=>import ('../components/StatPanel') , {suspense:true,ssr:true}
 )
 
-//const testUID = '809480504' || '820525870'
+//const testUID = '809480504' || '820525870' || '801214450'
 
 export default function App() {
   const [charecterData, setCharecterData] = useState([]);
   const [playerData, setPlayerData] = useState([]);
-  const [UID,setUID] = useState([]);
-
+  const [UID,setUID] = useState('');
 
   const fetchData = async (UID) => {
+    
+    
     const url = `https://enka.shinshin.moe/u/${UID}`;
     const data = await axios.get(url);
 
@@ -23,10 +26,10 @@ export default function App() {
       console.log("Invalid url");
       return null;
     }
-
     const html = await data.data;
+    //const html = MockData
     
-    const playerInfo = html.playerInfo // Not used now
+    const playerInfo = html.playerInfo
     
     const selectedChar = html.avatarInfoList.map((character) => {
       const charID = character.avatarId;
@@ -51,7 +54,7 @@ export default function App() {
         selectedStat,
       };
     });
-    console.log(selectedChar);
+    //console.log(selectedChar);
     setCharecterData(selectedChar);
     setPlayerData(playerInfo)
   };
