@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
-import { formatEquip, formatStat, statValueCalculator } from "../logicController/logic";
-import { useSelectContext } from "./StatPanel";
+import { useContext, useEffect, useState } from "react";
+import { formatStat, statValueCalculator } from "../logicController/logic";
+import { selectContext } from "./Character";
 
-const Substat = ({substat,atfType,setActiveAtf}) => {
+
+const Substat = ({substat,atfType,setActiveAtf,select,setSelect}) => {
     const [highlight,setHighlight] = useState(false);
 
-    const {select,setSelect} = useSelectContext() 
 
     const thisEquip = formatStat(substat.appendPropId)
 
@@ -43,7 +43,6 @@ const Substat = ({substat,atfType,setActiveAtf}) => {
             setSelecting(filtered);
             */
         }
-        
     }
 
     return (
