@@ -31,11 +31,11 @@ const MainStat = ({atf,select,setSelect}) => {
     return (
         <div className="text-slate-700">
             <h1 className="font-bold">{atfType}</h1>
-            <div className="flex justify-between">
+            <div className="flex justify-between font-bold">
                 <p>{formatStat(atf.mainStat.mainPropId)}</p>
                 <span>{atf.mainStat.statValue}</span>
             </div>
-            <div className="grid gap-y-1">
+            <div className="grid grid-cols-2 gap-2 md:gap-y-1 md:grid-cols-1">
             {atf.substat.map((substat,idx)=>{
                 return (
                 <Substat key={idx} substat={substat} atfType={atfType} setActiveAtf={setActiveAtf} select={select} setSelect={setSelect} /> 

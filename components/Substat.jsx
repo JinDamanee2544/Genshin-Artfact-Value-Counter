@@ -46,7 +46,7 @@ const Substat = ({substat,atfType,setActiveAtf,select,setSelect}) => {
     }
 
     return (
-        <div className={`flex justify-between text-sm duration-200 rounded p-0.5 ${highlight===true?'bg-orange-400 text-white ':null}`}
+        <div className={`flex justify-between text-sm duration-200 rounded p-0.5 ${highlight===true?'bg-red-400 text-white ':null}`}
         onClick={()=>toggleHandler()}>
             <p>{thisEquip}</p>
             <span>{substat.statValue}</span>

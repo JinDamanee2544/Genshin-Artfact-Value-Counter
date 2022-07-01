@@ -65,10 +65,43 @@ export default function App() {
   
   
   return (
-    <main className="bg-gray-300 flex flex-col justify-center items-center h-full min-h-screen overflow-auto p-10">
+    <main className="bg-gray-300 flex justify-center items-center h-full min-h-screen overflow-auto p-10 ">
       <Suspense fallback={<Spinner/>}>
         <StatPanel charecterData={charecterData} UID={UID} setUID={setUID} playerData={playerData}/>
       </Suspense>
     </main>
   );
 }
+/*
+<div className="rounded-xl bg-white  mx-10 mb-6 p-6 lg:mb-0 lg:col-span-1 duration-200 w-fit">
+        
+        <button className="p-2">
+          <a className="font-bold text-3xl text-black">Genshin Artifact Value Calculator</a>
+        </button>
+        <div className="">
+          <table className="table w-full ">
+            <thead>
+              <tr>
+                <th>SubStat</th>
+                <th>Job</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr className="hover">
+                <td>Cy Ganderton</td>
+                <td>3.3</td>
+              </tr>
+              <tr className="hover">
+                <td>Hart Hagerty</td>
+                <td>6.6</td>
+              </tr>
+              <tr className="hover">
+                <td>Brice Swyre</td>
+                <td>2</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        
+      </div>
+*/
