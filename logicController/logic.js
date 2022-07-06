@@ -20,8 +20,11 @@ const formatChar = (charID) => {
     switch (parseInt(charID%100)) {
         case 2 : return 'Kamisato Ayaka'
         case 22: return 'Venti'
+
         case 25: return 'Xingqiu'
+
         case 26: return 'Xiao'
+
         case 30: return 'Zhongli'
         case 32: return 'Bennett'
         case 33: return 'Childe'
@@ -31,12 +34,16 @@ const formatChar = (charID) => {
         case 46: return 'Hutao'
         case 47: return 'Kaedehara Kazuha'
         case 49: return 'Yoimiya'
+
         case 52: return 'Raiden Shogun'
         case 54: return 'Kokomi'
         case 56: return 'Sara'
         case 57: return 'Itto'
         case 58: return 'Yae'
+
         case 55: return 'Gorou'
+        
+
         case 60: return 'Yelan'
         case 63: return 'Shenhe'
         case 64: return 'Yunjin'

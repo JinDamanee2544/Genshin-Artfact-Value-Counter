@@ -30,15 +30,21 @@ const Substat = ({substat,atfType,setActiveAtf}) => {
         });
         
         if(highlight===false){
-            setSelect({
-                ...select,
-                [atfType]:[...select[atfType],equipValue]
-            })
+            const newSelect = select;
+            newSelect[atfType] =  [...select[atfType],equipValue]
+            setSelect(newSelect)
+            //setSelecting([...selecting,equipValue])
         } else {
-            setSelect({
-                ...select,
-                [atfType]:select[atfType].filter(substat=>substat.equip_type!==thisEquip)
-            })
+            const newSelect = select;
+            newSelect[atfType] = newSelect[atfType].filter(substat=>substat.equip_type!==thisEquip)
+            setSelect(newSelect)
+            /*
+            const filtered = (selecting.filter(equip=>{
+                //console.log(`${equip.equip_type} ${equip.equip_type === substat.appendPropId} ${substat.appendPropId}`);
+                return equip.equip_type !== thisEquip
+            }))
+            setSelecting(filtered);
+            */
         }
     }
 

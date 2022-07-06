@@ -18,10 +18,9 @@ const MainStat = ({atf}) => {
             const sum = select[atfType].map(substat=>substat.value).reduce((prev,curr)=>prev+curr,0)
             setSubSumValue(sum)
 
-            setOverAll({
-                ...overAll,
-                [atfType]:sum
-            })  
+            const newOverAll = Object.assign({},overAll)
+            newOverAll[atfType] = sum;
+            setOverAll(newOverAll)  
         }
     },[activeAtf])
 
@@ -37,7 +36,7 @@ const MainStat = ({atf}) => {
     */
 
     return (
-        <div className="flex flex-col text-slate-700 text-center">
+        <div className="text-slate-700">
             <h1 className="font-bold">{atfType}</h1>
             <div className="flex justify-between font-bold">
                 <p>{formatStat(atf.mainStat.mainPropId)}</p>

@@ -6,11 +6,7 @@ module.exports = {
     "./logicController/**/*.{js,ts,jsx,tsx}", 
   ],
   theme: {
-    extend: {
-      screens:{
-        'mobile':'520px'
-      }
-    },
+    extend: {},
   },
   plugins: [require("daisyui")],
 }

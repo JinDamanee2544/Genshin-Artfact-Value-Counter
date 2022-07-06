@@ -12,7 +12,7 @@ const Character = ({character}) => {
     const initValue = {
         equip_type : '',
         value : 0
-    }
+      }
       
     const [select,setSelect] = useState({
         'FLOWER':[initValue],
@@ -37,20 +37,14 @@ const Character = ({character}) => {
         setCharVal(sum)
     }, [overAll])
     
-    /*
-    useEffect(()=>{
-        console.log('Select',select);
-    },[select])
-    */
-
     return (
-        <div className="min-w-max hover:scale-[102%] duration-200">
-            <div className="w-full bg-red-500 rounded-t-xl p-2 flex justify-between px-4">
+        <div>
+            <div className=" w-full bg-red-500 rounded-t-xl p-2 flex justify-between px-4">
                     <h1 className="font-bold text-white text-xl">{formatChar(character.charID)}</h1>
                     <span className="text-white text-xl font-bold"> {charVal.toString().slice(0,4)} / 45 </span> 
             </div>
             <div className="bg-white shadow-xl p-4 pt-2 rounded-b-xl">
-                <div className="grid auto-cols-fr auto-rows-fr grid-cols-1 mobile:grid-cols-2 md:grid-flow-col gap-6 ">
+                <div className="grid grid-flow-row md:grid-flow-col gap-6 auto-cols-fr auto-rows-fr">
                 {
                 character.selectedStat.map((atf,idx)=>{
                     return (
