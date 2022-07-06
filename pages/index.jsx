@@ -1,23 +1,26 @@
 import axios from "axios";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useState ,lazy } from "react";
 import Spinner from "../components/Spinner";
 import dynamic from "next/dynamic";
 import {AiFillLock,AiFillHome} from 'react-icons/ai'
 
 import MockData from '../data/MockData'
 import Link from "next/link";
+import SearchBar from "../components/SeachBar";
 
+const StatPanel = lazy(()=>import('../components/StatPanel'));
+/*
 const StatPanel = dynamic(
-  ()=>import ('../components/StatPanel') , {suspense:true,ssr:true}
+  ()=>import ('../components/StatPanel') , {suspense:true}
 )
-
-//const testUID = '809480504' || '820525870' || '801214450' || '801515382'
+*/
 
 export default function App() {
   const [charecterData, setCharecterData] = useState([]);
   const [playerData, setPlayerData] = useState([]);
   const [UID,setUID] = useState('');
   const [lockID,setLockID] = useState(false);
+
 
   const fetchData = async (UID) => {
     
@@ -28,6 +31,7 @@ export default function App() {
       console.log("Invalid url");
       return null;
     }
+  
     const html = await data.data;
     
     //const html = MockData
@@ -68,10 +72,10 @@ export default function App() {
     setPlayerData(playerInfo)
   };
 
-  useEffect(() => {
-      console.log(UID);
-      fetchData(UID);
-  }, [UID]);
+  useEffect(()=>{
+    fetchData(UID)
+  },[UID])
+  
   
   const Error = () =>{
     return (
@@ -89,16 +93,24 @@ export default function App() {
       </div>
     )
   }
+
   return (
     <main className="bg-gray-300 flex justify-center items-center h-full min-h-screen overflow-auto p-10 ">
-      <Suspense fallback={<Spinner/>}>
-        {lockID===true? <Error/>
-          : <StatPanel charecterData={charecterData} UID={UID} setUID={setUID} playerData={playerData}/>
-        }
-      </Suspense>
+        <div className="flex flex-col justify-center items-center">
+          <SearchBar UID={UID} setUID={setUID} playerData={playerData}/>
+          {lockID===true? 
+            <Error/>
+            : 
+            <Suspense fallback={<Spinner/>}>
+              <StatPanel charecterData={charecterData}/>
+            </Suspense>
+          }
+        </div>
+          
     </main>
   );
 }
+
 /*
 <div className="rounded-xl bg-white  mx-10 mb-6 p-6 lg:mb-0 lg:col-span-1 duration-200 w-fit">
         
