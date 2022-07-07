@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
 
-const SearchBar = ({playerData,UID,setUID}) => {
+const SearchBar = ({playerData,UID,setUID,setIsFirstLoad}) => {
 
     const [search,setSearch] = useState('')
 
     const searchUID = () =>{
         if(search && search.length===9){
           setUID(search);
+          setIsFirstLoad(false);
         }
     }
 
