@@ -16,7 +16,7 @@ export default function App() {
   //const [lockID, setLockID] = useState(false);
   const [isFirstLoad, setIsFirstLoad] = useState(true);
 
-  const { genshinData, isLoading } = useEnka(UID ? `https://enka.shinshin.moe/u/${UID}` : null)
+  const { genshinData, isLoading } = useEnka(UID ? `https://enka.network/u/${UID}` : null)
 
   const updateData = () => {
     const playerInfo = genshinData.playerInfo;
