@@ -4,12 +4,6 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <title>Artifact Calculator</title>
-        <meta name="author" content="JinDamanee" />
-        <meta
-          name="description"
-          content="Artifact Calculator is a web application that helps you to calculate the artifact value of your gear in genshin impact."
-        />
         <link rel="preconne>ct" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"

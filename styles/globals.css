@@ -2,12 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base{
-    html{
-        font-family:'Source Sans Pro', sans-serif;
-    }
-    input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-    }
+@layer base {
+  html {
+    font-family: "Source Sans Pro", sans-serif;
+  }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  ::selection {
+    background: #f5f5f5;
+    color: #000;
+  }
 }
