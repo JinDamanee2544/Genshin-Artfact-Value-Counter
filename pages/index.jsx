@@ -38,11 +38,12 @@ export default function App() {
       }
       setLocalStorage("history-id", JSON.stringify(history))
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [UID])
 
   return (
     // gray background
-    <main className="bg-gray-300 flex justify-center items-center h-full min-h-screen overflow-auto p-10 ">
+    <main className=" bg-gray-300 flex justify-center items-center h-full min-h-screen overflow-auto p-10 ">
       <div className="flex flex-col justify-center items-center">
         <SearchBar UID={UID} setUID={setUID} playerData={playerData} setIsFirstLoad={setIsFirstLoad} />
         {

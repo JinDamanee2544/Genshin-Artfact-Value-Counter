@@ -26,12 +26,12 @@ const HistoryBox = () => {
             className="flex flex-col gap-4 bg-white p-6 rounded-lg w-[90%] my-6"
         >
             <div className="flex justify-between items-center">
-                <h1 className="font-bold text-lg text-black ml-4">
+                <h1 className="font-bold text-xl text-black ml-4">
                     History Search
                 </h1>
 
                 <button
-                    className="btn p-4 rounded-lg"
+                    className="btn p-4 rounded-full bg-slate-600 border-0"
                     onClick={() => {
                         removeLocalStorage("history-id")
                         setHistory([])

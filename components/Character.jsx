@@ -53,7 +53,7 @@ const Character = ({ character }) => {
 
             className="min-w-max"
         >
-            <div className="w-full bg-red-500 rounded-t-xl p-2 flex justify-between px-4">
+            <div className="w-full bg-gradient-to-r from-indigo-500 to-purple-700 rounded-t-xl p-2 flex justify-between px-4">
                 <h1 className="font-bold text-white text-xl">{formatChar(character.charID)}</h1>
                 <span className="text-white text-xl font-bold"> {charVal.toString().slice(0, 4)} / 45 </span>
             </div>

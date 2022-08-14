@@ -24,16 +24,16 @@ const SearchBar = ({ playerData, UID, setUID, setIsFirstLoad }) => {
     >
       <div className="tooltip" data-tip='TO ENKA.NETWORK'>
         <button disabled={UID === '' ? false : true} >
-          <a className={`btn ${UID === '' ? 'btn-disabled' : 'btn-ghost'} text-white bg-gradient-to-tr from-red-500 to-orange-500`} href={`https://enka.shinshin.moe/u/${UID}`}>
+          <a className={`btn ${UID === '' ? 'btn-disabled' : 'btn-ghost'} text-white bg-gradient-to-tr from-indigo-500 to-purple-600`} href={`https://enka.shinshin.moe/u/${UID}`}>
             {playerData.nickname || 'USER'}
           </a>
         </button>
       </div>
       <div className="form-control w-full ml-4">
         <div className="input-group w-full">
-          <input type="number" placeholder="Search UID …" className="input input-ghost w-full text-xl"
+          <input type="number" placeholder="Search UID …" className="input input-ghost w-full text-xl "
             onChange={(e) => setSearch(e.target.value)} value={search} />
-          <button className="btn btn-ghost text-white bg-gradient-to-tr from-red-500 to-orange-500"
+          <button className="btn btn-ghost text-white bg-gradient-to-tr from-indigo-500 to-purple-600"
             onClick={() => searchUID()}>
             <AiOutlineSearch className="w-6 h-6" />
           </button>
