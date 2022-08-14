@@ -53,7 +53,7 @@ const HistoryBox = () => {
     )
 }
 const HistoryList = ({ id }) => {
-    const { setSearch } = useUtil();
+    const { setSearch, setIsNew } = useUtil();
 
     return (
         <main className="flex flex-row justify-between items-center w-full bg-slate-200 rounded-xl">
@@ -68,6 +68,7 @@ const HistoryList = ({ id }) => {
                     const history = JSON.parse(getLocalStorage("history-id")) || [];
                     history.splice(history.indexOf(id), 1);
                     setLocalStorage("history-id", JSON.stringify(history));
+                    setIsNew(true)
                 }}
             >
                 <AiFillDelete />
