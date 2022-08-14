@@ -1,7 +1,6 @@
-import { Suspense, useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Spinner from "../components/Spinner";
-import { AiFillLock, AiFillHome } from 'react-icons/ai'
-import MockData from '../data/MockData'
+// import MockData from '../data/MockData'
 import SearchBar from "../components/SeachBar";
 import StatPanel from '../components/StatPanel'
 import useEnka from "../logicController/useEnka";

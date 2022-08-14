@@ -1,9 +1,9 @@
-import { useContext, useEffect, useState } from "react";
+import { forwardRef, useEffect, useState } from "react";
 import { formatStat, formatEquip } from "../logicController/logic";
 import { useData } from "./Character";
 import Substat from "./Substat";
 
-const MainStat = ({ atf }) => {
+const MainStat = forwardRef(({ atf }, ref) => {
 
     const { select, overAll, setOverAll } = useData()
 
@@ -47,7 +47,13 @@ const MainStat = ({ atf }) => {
             <div className="grid grid-cols-2 gap-2 md:gap-y-1 md:grid-cols-1">
                 {atf.substat.map((substat, idx) => {
                     return (
-                        <Substat key={idx} substat={substat} atfType={atfType} setActiveAtf={setActiveAtf} />
+                        <Substat
+                            key={idx}
+                            substat={substat}
+                            atfType={atfType}
+                            setActiveAtf={setActiveAtf}
+                            ref={ref}
+                        />
                     )
                 })}
             </div>
@@ -56,5 +62,7 @@ const MainStat = ({ atf }) => {
             </button>
         </div>
     )
-}
+})
+MainStat.displayName = 'MainStat'
+
 export default MainStat;

@@ -1,9 +1,11 @@
-import { useContext, useEffect, useState } from "react";
+import { forwardRef, useImperativeHandle, useState } from "react";
 import { formatStat, statValueCalculator } from "../logicController/logic";
-import { selectContext, useData } from "./Character";
+import { useData } from "./Character";
 
 
-const Substat = ({ substat, atfType, setActiveAtf }) => {
+const Substat = forwardRef(({ substat, atfType, setActiveAtf }, ref) => {
+
+
 
     const { select, setSelect } = useData();
 
@@ -41,7 +43,18 @@ const Substat = ({ substat, atfType, setActiveAtf }) => {
             })
         }
     }
-
+    // Can't provide "Clear All" feature
+    useImperativeHandle(ref, () => ({
+        clearAllStat: () => {
+            setSelect({
+                ...select,
+                [atfType]: []
+            })
+            setHighlight(false);
+            setActiveAtf(null);
+            console.log(`clearAllStat ${JSON.stringify(substat)}`);
+        }
+    }));
     return (
         <div className={`flex justify-between text-sm duration-200 rounded p-0.5 ${highlight === true ? 'bg-purple-400 text-white ' : null}`}
             onClick={() => toggleHandler()}>
@@ -49,5 +62,6 @@ const Substat = ({ substat, atfType, setActiveAtf }) => {
             <span>{substat.statValue}</span>
         </div>
     )
-}
+})
+Substat.displayName = 'Substat';
 export default Substat;

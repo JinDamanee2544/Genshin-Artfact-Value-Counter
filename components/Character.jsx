@@ -1,7 +1,8 @@
-import { createContext, useContext, useEffect, useMemo, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { formatChar } from "../logicController/logic";
 import MainStat from "./MainStat";
 import { motion } from 'framer-motion'
+import { AiOutlineClear } from "react-icons/ai";
 const dataContext = createContext();
 export const useData = () => {
     return useContext(dataContext)
@@ -42,6 +43,7 @@ const Character = ({ character }) => {
         console.log('Select',select);
     },[select])
     */
+    const CharecterRef = useRef();
 
     return (
         <motion.div
@@ -53,17 +55,29 @@ const Character = ({ character }) => {
 
             className="min-w-max"
         >
-            <div className="w-full bg-gradient-to-r from-indigo-500 to-purple-700 rounded-t-xl p-2 flex justify-between px-4">
+            <div className="w-full bg-gradient-to-r from-indigo-500 to-purple-700 rounded-t-xl p-2 flex justify-between items-center px-4">
                 <h1 className="font-bold text-white text-xl">{formatChar(character.charID)}</h1>
-                <span className="text-white text-xl font-bold"> {charVal.toString().slice(0, 4)} / 45 </span>
+                <div className="flex items-center gap-4">
+                    <span className="text-white text-xl font-bold"> {charVal.toString().slice(0, 4)} / 45 </span>
+                    <button
+                        className="btn self-end btn-ghost p-4 text-white text-lg"
+                        onClick={() => { CharecterRef.current.clearAllStat() }}
+                    >
+                        <AiOutlineClear />
+                    </button>
+                </div>
             </div>
             <div className="bg-white shadow-xl p-4 pt-2 rounded-b-xl">
+
                 <div className="grid auto-cols-fr auto-rows-fr grid-cols-1 mobile:grid-cols-2 md:grid-flow-col gap-6 ">
                     {
                         character.selectedStat.map((atf, idx) => {
                             return (
                                 <dataContext.Provider key={idx} value={{ select, setSelect, overAll, setOverAll }}>
-                                    <MainStat atf={atf} />
+                                    <MainStat
+                                        atf={atf}
+                                        ref={CharecterRef}
+                                    />
                                 </dataContext.Provider>
                             )
                         })}
