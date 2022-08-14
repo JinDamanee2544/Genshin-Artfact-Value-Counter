@@ -1,17 +1,18 @@
 import { createContext, useContext, useState } from "react";
 
-const searchContext = createContext();
+const utilContext = createContext();
 
-const useSearch = () => {
-  return useContext(searchContext);
+const useUtil = () => {
+  return useContext(utilContext);
 };
 
-const SearchProvider = ({ children }) => {
+const UtilProvider = ({ children }) => {
   const [search, setSearch] = useState("");
+  const [isNew, setIsNew] = useState(false);
   return (
-    <searchContext.Provider value={{ search, setSearch }}>
+    <utilContext.Provider value={{ search, setSearch, isNew, setIsNew }}>
       {children}
-    </searchContext.Provider>
+    </utilContext.Provider>
   );
 };
-export { useSearch, SearchProvider };
+export { useUtil, UtilProvider };

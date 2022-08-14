@@ -18,13 +18,13 @@ const Footer = () => {
           <Link href={"https://enka.network/"}>Credit : Enka.Network</Link>
         </div>
         <div className="btn btn-ghost rounded-full flex items-center gap-2">
-          <Link
+          <a
             href={
               "https://github.com/JinDamanee2544/Genshin-Artifact-Value-Counter"
             }
           >
             <AiFillGithub className="text-2xl" />
-          </Link>
+          </a>
         </div>
       </div>
     </main>

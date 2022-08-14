@@ -1,6 +1,5 @@
 import Head from "next/head";
-import { createContext } from "react";
-import { SearchProvider } from "../logicController/searchContext";
+import { UtilProvider } from "../logicController/searchContext";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
@@ -14,9 +13,9 @@ function MyApp({ Component, pageProps }) {
           content="Artifact Calculator is a web application that helps you to calculate the artifact value of your gear in genshin impact."
         />
       </Head>
-      <SearchProvider>
+      <UtilProvider>
         <Component {...pageProps} />
-      </SearchProvider>
+      </UtilProvider>
     </>
   );
 }

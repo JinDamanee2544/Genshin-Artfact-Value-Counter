@@ -1,19 +1,21 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { getLocalStorage, removeLocalStorage, setLocalStorage } from "../logicController/useLocalStorage"
 import { AiOutlineClear, AiFillDelete } from "react-icons/ai";
-import { useSearch } from "../logicController/searchContext";
+import { useSearch, useUtil } from "../logicController/searchContext";
 import { motion } from 'framer-motion'
 const HistoryBox = () => {
     const router = useRouter();
     const [history, setHistory] = useState([])
-
+    const { isNew, setIsNew } = useUtil();
     useEffect(() => {
         const history = JSON.parse(getLocalStorage("history-id"))
         if (history) {
             setHistory(history)
+            setIsNew(false)
         }
-    }, [history]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isNew]);
 
     return (
         <motion.main
@@ -51,7 +53,7 @@ const HistoryBox = () => {
     )
 }
 const HistoryList = ({ id }) => {
-    const { setSearch } = useSearch();
+    const { setSearch } = useUtil();
 
     return (
         <main className="flex flex-row justify-between items-center w-full bg-slate-200 rounded-xl">

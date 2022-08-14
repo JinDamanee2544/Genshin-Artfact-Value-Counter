@@ -1,12 +1,11 @@
-import { useEffect, useState } from "react";
 import { AiOutlineSearch } from "react-icons/ai";
-import { useSearch } from "../logicController/searchContext";
+import { useUtil } from "../logicController/searchContext";
 import { motion } from 'framer-motion'
 const SearchBar = ({ playerData, UID, setUID, setIsFirstLoad }) => {
 
   // const [search, setSearch] = useState('')
 
-  const { search, setSearch } = useSearch();
+  const { search, setSearch } = useUtil();
 
   const searchUID = () => {
     if (search && search.length === 9) {

@@ -9,6 +9,7 @@ import HistoryBox from "../components/HistoryBox";
 import { getLocalStorage, setLocalStorage } from "../logicController/useLocalStorage";
 import updateData from "../logicController/useUpdateData";
 import Footer from "../components/Footer";
+import { useUtil } from "../logicController/searchContext";
 
 export default function App() {
   const [charecterData, setCharecterData] = useState([]);
@@ -18,7 +19,7 @@ export default function App() {
   const [isFirstLoad, setIsFirstLoad] = useState(true);
 
   const { genshinData, isLoading } = useEnka(UID ? `https://enka.network/u/${UID}` : null)
-
+  const { setIsNew } = useUtil();
   useEffect(() => {
     if (genshinData) {
       updateData(genshinData, setCharecterData, setPlayerData);
@@ -26,12 +27,14 @@ export default function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [genshinData])
 
+
   useEffect(() => {
     if (UID !== '') {
       const history = JSON.parse(getLocalStorage("history-id")) || [];
       console.log(history);
       if (!history.includes(UID)) {
         history.push(UID)
+        setIsNew(true);
       }
       setLocalStorage("history-id", JSON.stringify(history))
     }
