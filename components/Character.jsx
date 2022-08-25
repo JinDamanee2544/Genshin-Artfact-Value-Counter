@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useMemo, useRef, useState } from "react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { formatChar } from "../logicController/logic";
 import MainStat from "./MainStat";
 import { motion } from 'framer-motion'
@@ -38,12 +38,8 @@ const Character = ({ character }) => {
         setCharVal(sum)
     }, [overAll])
 
-    /*
-    useEffect(()=>{
-        console.log('Select',select);
-    },[select])
-    */
-    const CharecterRef = useRef();
+
+    // const CharecterRef = useRef();
 
     return (
         <motion.div
@@ -59,12 +55,12 @@ const Character = ({ character }) => {
                 <h1 className="font-bold text-white text-xl">{formatChar(character.charID)}</h1>
                 <div className="flex items-center gap-4">
                     <span className="text-white text-xl font-bold"> {charVal.toString().slice(0, 4)} / 45 </span>
-                    <button
+                    {/* <button
                         className="btn self-end btn-ghost p-4 text-white text-lg"
                         onClick={() => { CharecterRef.current.clearAllStat() }}
                     >
                         <AiOutlineClear />
-                    </button>
+                    </button> */}
                 </div>
             </div>
             <div className="bg-white shadow-xl p-4 pt-2 rounded-b-xl">
@@ -76,7 +72,7 @@ const Character = ({ character }) => {
                                 <dataContext.Provider key={idx} value={{ select, setSelect, overAll, setOverAll }}>
                                     <MainStat
                                         atf={atf}
-                                        ref={CharecterRef}
+                                    // ref={CharecterRef}
                                     />
                                 </dataContext.Provider>
                             )

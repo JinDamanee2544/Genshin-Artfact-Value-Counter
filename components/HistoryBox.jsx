@@ -1,21 +1,8 @@
-import { useRouter } from "next/router";
-import { useCallback, useEffect, useState } from "react"
-import { getLocalStorage, removeLocalStorage, setLocalStorage } from "../logicController/useLocalStorage"
 import { AiOutlineClear, AiFillDelete } from "react-icons/ai";
-import { useSearch, useUtil } from "../logicController/searchContext";
 import { motion } from 'framer-motion'
+import useHistoryList from "../logicController/useHistoryList";
 const HistoryBox = () => {
-    const router = useRouter();
-    const [history, setHistory] = useState([])
-    const { isNew, setIsNew } = useUtil();
-    useEffect(() => {
-        const history = JSON.parse(getLocalStorage("history-id"))
-        if (history) {
-            setHistory(history)
-            setIsNew(false)
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isNew]);
+    const [history, clearAllHistory, deleteHistory, setSearchID] = useHistoryList();
 
     return (
         <motion.main
@@ -32,18 +19,19 @@ const HistoryBox = () => {
 
                 <button
                     className="btn p-4 rounded-full bg-slate-600 border-0"
-                    onClick={() => {
-                        removeLocalStorage("history-id")
-                        setHistory([])
-                        router.push('/')
-                    }}
+                    onClick={() => clearAllHistory()}
                 ><AiOutlineClear className="text-white text-xl" />
                 </button>
             </div>
             <div className="p-2 flex flex-col gap-2">
                 {
                     (history?.length > 0) ? history?.map((id, index) => {
-                        return <HistoryList key={index} id={id} />
+                        return <HistoryList
+                            key={index}
+                            id={id}
+                            deleteHistory={deleteHistory}
+                            setSearchID={setSearchID}
+                        />
                     })
                         :
                         <p>No History</p>
@@ -52,24 +40,17 @@ const HistoryBox = () => {
         </motion.main>
     )
 }
-const HistoryList = ({ id }) => {
-    const { setSearch, setIsNew } = useUtil();
-
+const HistoryList = ({ id, deleteHistory, setSearchID }) => {
     return (
         <main className="flex flex-row justify-between items-center w-full bg-slate-200 rounded-xl">
             <button
                 key={id}
                 className="btn btn-ghost px-10 rounded-lg text-base"
-                onClick={() => { setSearch(id) }}
+                onClick={() => { setSearchID(id) }}
             >{id}</button>
             <button
                 className="btn btn-ghost rounded-lg text-lg bg-slate-300"
-                onClick={() => {
-                    const history = JSON.parse(getLocalStorage("history-id")) || [];
-                    history.splice(history.indexOf(id), 1);
-                    setLocalStorage("history-id", JSON.stringify(history));
-                    setIsNew(true)
-                }}
+                onClick={() => deleteHistory(id)}
             >
                 <AiFillDelete />
             </button>

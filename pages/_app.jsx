@@ -1,5 +1,5 @@
 import Head from "next/head";
-import { UtilProvider } from "../logicController/searchContext";
+import { UtilProvider } from "../context/searchContext";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {

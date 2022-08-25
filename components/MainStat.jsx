@@ -3,7 +3,7 @@ import { formatStat, formatEquip } from "../logicController/logic";
 import { useData } from "./Character";
 import Substat from "./Substat";
 
-const MainStat = forwardRef(({ atf }, ref) => {
+const MainStat = ({ atf }) => {
 
     const { select, overAll, setOverAll } = useData()
 
@@ -26,17 +26,6 @@ const MainStat = forwardRef(({ atf }, ref) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [activeAtf])
 
-    /*
-    useEffect(() => {
-        setSelect(select)
-    }, [select])
-    
-    
-    useEffect(()=>{
-        console.log('test');
-    },[select])
-    */
-
     return (
         <div className="flex flex-col text-slate-700 text-center">
             <h1 className="font-bold">{atfType}</h1>
@@ -52,7 +41,7 @@ const MainStat = forwardRef(({ atf }, ref) => {
                             substat={substat}
                             atfType={atfType}
                             setActiveAtf={setActiveAtf}
-                            ref={ref}
+                        // ref={ref}
                         />
                     )
                 })}
@@ -62,7 +51,7 @@ const MainStat = forwardRef(({ atf }, ref) => {
             </button>
         </div>
     )
-})
-MainStat.displayName = 'MainStat'
+}
+// MainStat.displayName = 'MainStat'
 
 export default MainStat;

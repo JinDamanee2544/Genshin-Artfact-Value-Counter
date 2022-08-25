@@ -1,9 +1,7 @@
 import { AiOutlineSearch } from "react-icons/ai";
-import { useUtil } from "../logicController/searchContext";
+import { useUtil } from "../context/searchContext";
 import { motion } from 'framer-motion'
 const SearchBar = ({ playerData, UID, setUID, setIsFirstLoad }) => {
-
-  // const [search, setSearch] = useState('')
 
   const { search, setSearch } = useUtil();
 
